@@ -1,16 +1,19 @@
 <!--  -->
 <template>
   <div class="HomePage">
-    <h1>{{ title }}</h1>
+    <NavCom></NavCom>
   </div>
 </template>
 
 <script>
+import NavCom from '../components/NavCom'
 export default {
   name: "HomePage",
+  components:{
+    NavCom
+  },
   data() {
     return {
-      title: "欢迎来到商场",
     };
   },
 };
