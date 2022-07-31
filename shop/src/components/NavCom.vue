@@ -19,140 +19,175 @@
         </div>
         <!-- 搜索框 -->
         <div class="nav-search" v-if="showNav">
-            <i class="el-icon-search"></i>
-            <!-- <el-input v-model="searchValue" placeholder="搜索 apple.com.cn"></el-input> -->
-            <!-- 下拉搜索框 -->
-            <el-select v-model="value" multiple filterable remote reserve-keyword placeholder="请输入关键词"
-                :remote-method="remoteMethod" :loading="loading">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-            </el-select>
+            
+            <div class="search-title">
+                <i class="el-icon-search"></i>
+            <el-input v-model="searchValue" placeholder="搜索 apple.com.cn"></el-input>
             <i class="el-icon-close "></i>
+            </div>
+            <!-- 提示栏 -->
+            <div class="tips-box">
+                <el-table :data="searchTips" style="width:100%">
+                <el-table-column >{{}}</el-table-column>
+                </el-table>
+            </div>
         </div>
     </div>
 
 </template>
 <script>
-    export default {
-        name: 'NavCom',
-        data() {
-            return {
-                // 控制导航条显示
-                showNav: true,
-                navList: ['商店', 'Mac', 'iPad', 'iPhone', 'Watch', 'AirPods', '家居', 'Apple独家', '配件', '技术支持'],
-                navUrls: ['www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com', 'www.baidu.com'],
-                navListProcess: [],
-                searchValue: '',
-                //    下拉框设置
-                options: [{
-                    value: '选项1',
-                    label: '黄金糕'
-                }, {
-                    value: '选项2',
-                    label: '双皮奶'
-                }, {
-                    value: '选项3',
-                    label: '蚵仔煎'
-                }, {
-                    value: '选项4',
-                    label: '龙须面'
-                }, {
-                    value: '选项5',
-                    label: '北京烤鸭'
-                }],
-                value: ''
-            }
-        },
-        mounted() {
-            // 处理导航列表
-            let list = []
-            this.navList.forEach((nav, index) => {
-                console.log('当前的', nav, index, this.navList.length)
-                console.log('判断生效')
-                let navs = {
-                    id: "nav" + index + 1,
-                    name: nav,
-                    url: this.navUrls[index]
-                };
-                list.push(navs)
-                if (index == this.navList.length - 1) {
-                    console.log('最后一次')
-                    this.navListProcess = list
-                    console.log('处理后的navs:', this.navListProcess)
-                }
-            });
-        },
-
-    }
+export default {
+  name: "NavCom",
+  data() {
+    return {
+      // 控制导航条显示
+      showNav: true,
+      navList: [
+        "商店",
+        "Mac",
+        "iPad",
+        "iPhone",
+        "Watch",
+        "AirPods",
+        "家居",
+        "Apple独家",
+        "配件",
+        "技术支持",
+      ],
+      navUrls: [
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+        "www.baidu.com",
+      ],
+      navListProcess: [],
+      searchValue: "",
+    // 搜索提示
+    searchTips:{
+        title:"快速链接",
+        tipsList:[
+            "查找零售店",
+            "配件",
+            "AirPods",
+            "AirTag",
+            "AppleCare+ 服务计划"
+        ]
+    },
+    searchTipsProcess:[]
+    };
+  },
+  mounted() {
+    // 处理导航列表
+    let list = [];
+    this.navList.forEach((nav, index) => {
+      let navs = {
+        id: "nav" + index + 1,
+        name: nav,
+        url: this.navUrls[index],
+      };
+      list.push(navs);
+      if (index == this.navList.length - 1) {
+        this.navListProcess = list;
+      }
+    });
+    // 处理提示内容
+    list=[]
+    this.searchTips.tipsList.forEach((i,index)=>{
+        list.push({
+            id:"tips"+index++,
+            name:i
+        })
+    });
+    this.searchTipsProcess = list
+    console.log(this.searchTipsProcess)
+  },
+};
 </script>
 <style>
-    * {
-        font-size: 12px;
-        font-family: "SF Pro SC", "HanHei SC", "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    }
+* {
+  font-size: 12px;
+  font-family: "SF Pro SC", "HanHei SC", "SF Pro Text", "Myriad Set Pro",
+    "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
+}
 
-    .nav-warpper {
-        display: flex;
-        justify-content: center;
-        background-color: #313132;
-    }
+.nav-warpper {
+  display: flex;
+  justify-content: center;
+  background-color: #313132;
+}
 
-    .nav {
-        width: 980px;
-        height: 44px;
-        padding: 0 22px;
-        background-color: #313132;
-        line-height: 44px;
-        display: flex;
-        justify-content: space-between;
-    }
+.nav {
+  width: 980px;
+  height: 44px;
+  padding: 0 22px;
+  background-color: #313132;
+  line-height: 44px;
+  display: flex;
+  justify-content: space-between;
+}
 
-    .nav i {
-        color: rgba(245, 245, 247, 0.5);
-        font-size: 20px;
-        margin-top: 12px;
-        text-align: center;
-    }
+.nav i {
+  color: rgba(245, 245, 247, 0.5);
+  font-size: 20px;
+  margin-top: 12px;
+  text-align: center;
+}
 
-    .nav i:hover {
-        color: rgb(245, 245, 247)
-    }
+.nav i:hover {
+  color: rgb(245, 245, 247);
+}
 
-    .nav .el-link--inner {
-        color: rgba(245, 245, 247, 0.7);
-    }
+.nav .el-link--inner {
+  color: rgba(245, 245, 247, 0.7);
+}
 
-    .nav .el-link--inner:hover {
-        color: rgb(245, 245, 247);
-    }
+.nav .el-link--inner:hover {
+  color: rgb(245, 245, 247);
+}
 
-    .nav-search {
-        width: 682px;
-        display: flex;
-        align-items: center;
-    }
+.nav-search {
+}
+.search-title{
+  width: 682px;
+  display: flex;
+  align-items: center;
+}
+.nav-search i {
+  font-size: 14px;
+  color: rgba(245, 245, 247, 0.5);
+  padding: 10px;
+}
 
-    .nav-search i {
-        font-size: 14px;
-        color: rgba(245, 245, 247, 0.5);
-        padding: 10px;
-    }
+.nav-search .el-icon-close {
+  font-size: 20px;
+}
 
-    .nav-search .el-icon-close {
-        font-size: 20px;
-    }
+.nav-search input {
+  background-color: #313132;
+  border: 0;
+  color: rgb(245, 245, 247);
+  font-size: 16px;
+}
 
-    .nav-search input {
-        background-color: #313132;
-        border: 0;
-        color: rgb(245, 245, 247);
-        font-size: 16px;
-    }
-
-    .nav-search input::-webkit-input-placeholder {
-        /* Chrome/Opera/Safari */
-        color: rgba(245, 245, 247, 0.3);
-        font-size: 15px;
-        letter-spacing: 1px;
-    }
+.nav-search input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(245, 245, 247, 0.3);
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+/* 搜索框 */
+.tips-box {
+  width: 682px;
+  height: 239px;
+  background: rgb(226, 226, 226);
+  position: absolute;
+  border-radius: 0 0 18px 18px;
+}
 </style>
