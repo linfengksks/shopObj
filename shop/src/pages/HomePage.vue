@@ -1,26 +1,30 @@
 <!--  -->
 <template>
   <div class="HomePage">
+    <AdvCom></AdvCom>
     <NavCom></NavCom>
     <ClassCom></ClassCom>
   </div>
 </template>
 
 <script>
-import  ClassCom  from "../components/ClassCom";
-import NavCom from '../components/NavCom'
-export default {
-  name: "HomePage",
-  components:{
-    NavCom,
-    ClassCom
-  },
-  data() {
-    return {
-    };
-  },
-};
+  import AdvCom from "../components/AdvCom";
+  import ClassCom from "../components/ClassCom";
+  import NavCom from '../components/NavCom'
+  export default {
+    name: "HomePage",
+    components: {
+      AdvCom,
+      NavCom,
+      ClassCom
+    },
+    data() {
+      return {
+      };
+    },
+  };
 </script>
 
-<style scoped lang="css">
+<style>
+ 
 </style>
