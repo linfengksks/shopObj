@@ -4,6 +4,7 @@ const path = require('path')
 const resolve = dir => path.join(__dirname, dir)
 
 module.exports = defineConfig({
+  publicPath: './',
   transpileDependencies: true,
   chainWebpack(config) {
     config.module

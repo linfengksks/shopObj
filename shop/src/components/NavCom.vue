@@ -269,6 +269,8 @@ export default {
   height: 23.9rem;
   background: rgb(255, 255, 255);
   position: absolute;
+  z-index: 999;
+  margin-top: 0.4rem;
   border-radius: 0 0 1.8rem 1.8rem;
   padding: 2.3rem 0.7rem 1.8rem 0.7rem;
   .tips-title {

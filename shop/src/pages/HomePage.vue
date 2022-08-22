@@ -1,9 +1,10 @@
 <!--  -->
 <template>
   <div class="HomePage">
-    <AdvCom></AdvCom>
-    <NavCom></NavCom>
-    <ClassCom></ClassCom>
+    <AdvCom class='advCom'></AdvCom>
+    <NavCom class='navCom'></NavCom>
+    <ClassCom class='classCom'></ClassCom>
+    <PosterCom></PosterCom>
   </div>
 </template>
 
@@ -11,12 +12,14 @@
   import AdvCom from "../components/AdvCom";
   import ClassCom from "../components/ClassCom";
   import NavCom from '../components/NavCom'
+  import PosterCom from '../components/PosterCom'
   export default {
     name: "HomePage",
     components: {
       AdvCom,
       NavCom,
-      ClassCom
+      ClassCom,
+      PosterCom
     },
     data() {
       return {
@@ -25,6 +28,6 @@
   };
 </script>
 
-<style>
- 
+<style lang="less" scoped>
+
 </style>
