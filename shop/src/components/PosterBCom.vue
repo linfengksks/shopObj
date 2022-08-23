@@ -1,11 +1,11 @@
 <template>
-  <div class="poster-com">
+  <div class="posterb-com">
     <!-- 文字部分 -->
     <div class="text-box">
       <div class="label-text">新款</div>
-      <div class="title-text">MacBook Air</div>
-      <div class="subtitle-text">别看轻，别轻看。</div>
-      <div class="price-text">RMB <span id="price-num">9499</span>起</div>
+      <div class="title-text">13 英寸 MacBook Pro</div>
+      <div class="subtitle-text">超机动，硬实力。</div>
+      <div class="price-text">RMB <span id="price-num">9999</span>起</div>
       <div class="btn-box">
         <el-button type="success" round>购买</el-button>
         <el-link type="primary">进一步了解></el-link>
@@ -25,11 +25,11 @@
 
 <script>
 export default {
-  name: "PosterCom",
+  name: "PosterBCom",
 
   data() {
     return {
-      image: require("../../static/img/macbook air2.jpg"),
+      image: require("../../static/img/macbook_pro_13.jpg"),
     };
   },
 
@@ -40,11 +40,12 @@ export default {
 </script>
 
 <style scoped lang="less">
-.poster-com {
-  height: 75.2rem;
+.posterb-com {
+  height: 72.9rem;
   text-align: center;
+  background: #000;
   .label-text {
-    margin-top: 6rem;
+   padding-top: 6rem;
     color: #f56300;
     font-size: 1.7rem;
     font-weight: 600;
@@ -53,17 +54,17 @@ export default {
   .title-text {
     font-size: 5.6rem;
     font-weight: 600;
-    color: #1d1d1f;
+    color: #f5f5f7;
   }
   .subtitle-text {
     font-size: 2.8rem;
     font-weight: 600;
-    color: #1d1d1f;
+    color: #f5f5f7;
     margin-bottom: 1.12rem;
   }
   .price-text {
     font-size: 1.7rem;
-    color: #1d1d1f;
+    color: #f5f5f7;
     margin-top: 2.25rem;
   }
   .btn-box {

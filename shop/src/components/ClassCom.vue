@@ -1,9 +1,14 @@
 <template>
   <div class="ClassCom">
-    <div class="nav-box" v-for="(i, index) in iconList" :key="index">
-      <svg-icon :className="'icon-nav' + (index + 1)" :iconClass="i"></svg-icon>
-      <div class="nav-name">{{ titleList[index] }}</div>
-      <div class="nav-sale">{{ sale[index] }}</div>
+    <div class="nav-wrapper" :style="navStaly">
+      <div class="nav-box" v-for="(i, index) in iconList" :key="index">
+        <svg-icon
+          :className="'icon-nav' + (index + 1)"
+          :iconClass="i"
+        ></svg-icon>
+        <div class="nav-name">{{ titleList[index] }}</div>
+        <div class="nav-sale">{{ sale[index] }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +48,7 @@ export default {
       sale: ["新款", "热卖", "", "", "", "", "", "", "", "", "爆款"],
       navList: [],
       imgStyle: ``,
+      navStaly:"",
     };
   },
 
@@ -57,6 +63,9 @@ export default {
       });
     });
     console.log("navList整理后的结果：", me.navList);
+    setTimeout(() => {
+      this.navStaly = "left:0;visibility:visible;"
+    }, 200);
   },
 
   methods: {},
@@ -69,12 +78,18 @@ export default {
   "monitor", "equipment", "monterey", "shopmac";
 
 .ClassCom {
-  display: flex;
-  justify-content: space-between;
   margin: 0.8rem auto;
   width: 102.4rem;
   height: 10rem;
-  .nav-box{
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    left: 11rem;
+    transition: all 0.3s;
+    visibility:hidden;
+  }
+  .nav-box {
     cursor: pointer;
   }
   .nav-box:hover {
