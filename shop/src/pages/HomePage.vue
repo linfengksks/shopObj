@@ -7,6 +7,7 @@
     <ActivitiesCom></ActivitiesCom>
     <PosterCom></PosterCom>
     <PosterBCom></PosterBCom>
+    <CompareCom></CompareCom>
   </div>
 </template>
 
@@ -17,7 +18,7 @@
   import ActivitiesCom from '../components/ActivitiesCom'
   import PosterCom from '../components/PosterCom'
   import PosterBCom from '../components/PosterBCom'
-  
+  import CompareCom from '../components/CompareCom'
   export default {
     name: "HomePage",
     components: {
@@ -26,7 +27,8 @@
       ClassCom,
       ActivitiesCom,
       PosterCom,
-      PosterBCom
+      PosterBCom,
+      CompareCom,
     },
     data() {
       return {
