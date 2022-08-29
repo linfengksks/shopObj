@@ -301,8 +301,9 @@ export default {
 <style lang="less" scoped>
 .CompareCom {
   padding-top: 11rem;
-  height: 215.7rem;
+  height: 205rem;
   position: relative;
+  background:#fafafa;
   .compare-box {
     width: 98rem;
     position: relative;
@@ -361,13 +362,15 @@ export default {
   }
   .look-move {
     position: absolute;
-    bottom: 15.5rem;
+    bottom: 14rem;
     width: 100%;
     text-align: center;
+    &::v-deep .el-link {
+      margin-right: 4.2rem;
+    }
     &::v-deep .el-link--inner {
       font-size: 2.1rem;
       color: #06c;
-      margin-right:4.2rem;
     }
   }
 }
